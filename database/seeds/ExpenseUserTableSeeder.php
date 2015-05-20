@@ -19,7 +19,7 @@ class ExpenseUserTableSeeder extends Seeder
         $userIds = User::lists('id');
         $expenseIds = Expense::lists('id');
 
-        foreach(range(1, 50) as $index)
+        foreach(range(1, 300) as $index)
         {
             $expenseId = (int) $faker->randomElement($expenseIds);
             $expense = Expense::find($expenseId);

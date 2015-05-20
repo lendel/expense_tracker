@@ -15,11 +15,11 @@ class ExpensesTableSeeder extends Seeder
 
         $faker = Faker::create();
 
-        foreach(range(1, 50) as $index)
+        foreach(range(1, 200) as $index)
         {
             Expense::create([
-                'name' => $faker->word,
-                'description' => $faker->sentence(),
+                'name' => $faker->bs,
+                'description' => $faker->realText(),
                 'company' => $faker->company,
                 'link' => $faker->url,
                 'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 10000),

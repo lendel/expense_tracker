@@ -1,9 +1,13 @@
 <?php namespace App\Http\Controllers;
 
+use App\Expense;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use App\User;
 
 class PagesController extends Controller {
 
@@ -14,7 +18,19 @@ class PagesController extends Controller {
 	 */
 	public function index()
 	{
-		//
+        if(Auth::check()){
+            $userId = Auth::id();
+            $user = User::find($userId);
+            $expenses = Expense::whereHas('user', function($q) use ($userId)
+            {
+                $q->where('user_id', $userId);
+            })->get();
+        } else {
+            $userId = null;
+            $expenses = null;
+        }
+
+		return view('expenses')->with('expenses', $expenses);
 	}
 
 	/**
