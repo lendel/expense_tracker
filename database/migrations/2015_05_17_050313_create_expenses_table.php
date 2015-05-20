@@ -21,7 +21,6 @@ class CreateExpensesTable extends Migration {
             $table->string('link');
             $table->decimal('price');
             $table->enum('renewal', ['weekly', 'monthly', 'yearly']);
-			$table->timestamps();
 		});
 	}
 
