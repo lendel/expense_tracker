@@ -17,4 +17,8 @@ class Expense extends Model {
      * @var array
      */
     protected $fillable = ['name', 'description', 'company', 'link', 'price', 'renewal'];
+
+    public function User(){
+        return $this->belongsToMany('App\User')->withPivot('price_charged');
+    }
 }
